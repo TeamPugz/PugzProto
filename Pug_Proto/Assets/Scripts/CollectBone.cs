@@ -6,20 +6,9 @@ public class CollectBone : MonoBehaviour
     PlayerController player;
   
     Rigidbody rb;
-  
-
-   
-
-    
- 
-   
-
-
-
 
     void Start()
     {
-        
 
         rb = GetComponent<Rigidbody>();
         player = GetComponent<PlayerController>();
@@ -32,9 +21,7 @@ public class CollectBone : MonoBehaviour
         
 
     }
-   
-    
-    
+
     void Speed()
     {
         player.Speed += 1f;
