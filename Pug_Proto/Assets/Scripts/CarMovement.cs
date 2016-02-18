@@ -25,7 +25,7 @@ public class CarMovement : MonoBehaviour
 
     void ResetCar()
     {
-        if (car.transform.position.x < -15)
+        if (car.transform.position.z >= 15)
         {
             //Debug.Log("working");
             Vector3 temp = new Vector3(spawnX, spawnY, spawnZ);
