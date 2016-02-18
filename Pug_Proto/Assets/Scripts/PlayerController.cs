@@ -49,4 +49,21 @@ public class PlayerController : MonoBehaviour
             Application.Quit();
         }
     }
+
+    void Respawn()
+    {
+        Vector3 spawn = new Vector3(0, 0, 0);
+        ThisBody.transform.position = spawn;
+
+
+    }
+    void OnCollisionEnter(Collision thing)
+    {
+        if (thing.gameObject.tag=="Enemy")
+        {
+            Respawn();
+        }
+
+
+    }
 }
