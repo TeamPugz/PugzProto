@@ -17,7 +17,7 @@ public class CatController : MonoBehaviour
     [SerializeField]
     private Rigidbody ThisBody;
     [SerializeField]
-    private int CurrentPos = 1;
+    private int CurrentPos = 0;
 
     // Use this for initialization
     void Start()
@@ -36,27 +36,39 @@ public class CatController : MonoBehaviour
     void CatMovement(float Cat_Speed)
     {
 
-        if(ThisBody.transform.position != TargetPos[CurrentPos].transform.position)
+        if (ThisBody.transform.position != TargetPos[CurrentPos].transform.position)
         {
             //X
-            if(ThisBody.transform.position.x > TargetPos[CurrentPos].transform.position.x)
+            if(ThisBody.transform.position.x <= TargetPos[CurrentPos].transform.position.x)
             {
-                ThisBody.transform.Translate(new Vector3(-Cat_Speed, 0, 0));
+                ThisBody.velocity = new Vector3(Cat_Speed, ThisBody.velocity.y, ThisBody.velocity.z);
             }
-                else if(ThisBody.transform.position.x < TargetPos[CurrentPos].transform.position.x)
-                {
-                    ThisBody.transform.Translate(new Vector3(Cat_Speed, 0, 0));
-                }
-
+            else if(ThisBody.transform.position.x >= TargetPos[CurrentPos].transform.position.x)
+            {
+                ThisBody.velocity = new Vector3(-Cat_Speed, ThisBody.velocity.y, ThisBody.velocity.z);
+            }
             //Z
-            if (ThisBody.transform.position.z > TargetPos[CurrentPos].transform.position.z)
+            if (ThisBody.transform.position.z <= TargetPos[CurrentPos].transform.position.z)
             {
-                ThisBody.transform.Translate(new Vector3(0, 0, -Cat_Speed));
+                ThisBody.velocity = new Vector3(ThisBody.velocity.x, ThisBody.velocity.y, Cat_Speed);
             }
-            else if (ThisBody.transform.position.z < TargetPos[CurrentPos].transform.position.z)
+            else if (ThisBody.transform.position.z >= TargetPos[CurrentPos].transform.position.z)
             {
-                ThisBody.transform.Translate(new Vector3(Cat_Speed, 0, 0));
+                ThisBody.velocity = new Vector3(ThisBody.velocity.x, ThisBody.velocity.y, -Cat_Speed);
             }
+        }
+
+        if ((ThisBody.transform.position.x >= TargetPos[CurrentPos].transform.position.x - 0.5 && ThisBody.transform.position.x <= TargetPos[CurrentPos].transform.position.x + 0.5) &&
+            (ThisBody.transform.position.z >= TargetPos[CurrentPos].transform.position.z - 0.5 && ThisBody.transform.position.z <= TargetPos[CurrentPos].transform.position.z + 0.5))
+        {
+            Debug.Log("Position hit");
+            CurrentPos++;
+        }
+
+
+        if(CurrentPos >= TargetPos.Length)
+        {
+            CurrentPos = 0;
         }
     }
 }
