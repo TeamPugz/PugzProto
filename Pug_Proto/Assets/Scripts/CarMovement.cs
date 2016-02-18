@@ -1,26 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CarMovement : MonoBehaviour {
+public class CarMovement : MonoBehaviour
+{
+    [SerializeField]
+    public float spawnX, spawnY, spawnZ;
+    [SerializeField]
+    public Vector3 carVelocity;
+
     Rigidbody car;
 
-	void Start () {
+    void Start()
+    {
         car = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-        car.velocity = new Vector3(-5,0,0);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        car.velocity = carVelocity;
         ResetCar();
-	}
+    }
 
     void ResetCar()
     {
-        if (car.transform.position.x<-15)
+        if (car.transform.position.x < -15)
         {
             //Debug.Log("working");
-            Vector3 temp = new Vector3(15, car.transform.position.y, car.transform.position.z);
+            Vector3 temp = new Vector3(spawnX, spawnY, spawnZ);
             car.transform.position = temp;
         }
     }
