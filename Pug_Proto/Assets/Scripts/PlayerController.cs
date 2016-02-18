@@ -4,7 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 
 public class PlayerController : MonoBehaviour
-{ 
+{
+    [SerializeField]
+    public float spawnX, spawnY, spawnZ;
     [HideInInspector]
     public float Speed = 1;
     [SerializeField]
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Respawn()
     {
-        Vector3 spawn = new Vector3(0, 0, 0);
+        Vector3 spawn = new Vector3(spawnX, spawnY, spawnZ);
         ThisBody.transform.position = spawn;
 
 
