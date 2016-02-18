@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            ThisBody.transform.Translate(new Vector3(0, 0, Speed/2));
+            ThisBody.transform.Translate(new Vector3(0, 0, Speed/4));
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.S))
         {
-            ThisBody.transform.Translate(new Vector3(0, 0, -Speed/2));
+            ThisBody.transform.Translate(new Vector3(0, 0, -Speed/4));
         }
 
         if(Input.GetKey(KeyCode.D))
