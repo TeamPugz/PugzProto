@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-[RequireComponent(typeof(AudioSource))]
+
 public class CollectBone : MonoBehaviour
 {
     PlayerController player;
   
-    Rigidbody rb;
+
   
 
    
@@ -21,7 +21,6 @@ public class CollectBone : MonoBehaviour
     {
         
 
-        rb = GetComponent<Rigidbody>();
         player = GetComponent<PlayerController>();
        
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bone
   - Enemy
+  - Owner
   layers:
   - Default
   - TransparentFX
